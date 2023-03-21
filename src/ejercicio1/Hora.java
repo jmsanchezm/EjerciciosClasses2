@@ -4,15 +4,15 @@ public class Hora {
 	/**
 	 * Se guardará la hora
 	 */
-	int hora;
+	private int hora;
 	/**
 	 * Se guardarán los minutos
 	 */
-	int minuto;
+	private int minuto;
 	/**
 	 * Se guardarán los segundos
 	 */
-	int segundo;
+	private int segundo;
 
 	/**
 	 * Constructor sin parámetros
@@ -74,20 +74,42 @@ public class Hora {
 		}
 	}
 
-	public void incrementaSeg() {
-		if (segundo >= 60 || segundo < 0 && minuto >= 60 || minuto < 0 && hora >= 24 || hora < 0) {
-			System.out.println("Dato erróneo.");
+	public void setMinuto(int minuto) {
+		if (minuto <= 59 || minuto > 0) {
+			this.minuto = minuto;
 		}
+	}
+
+	public void setSegundo(int segundo) {
+		if (segundo <= 59 || segundo > 0) {
+			this.segundo = segundo;
+		}
+	}
+
+	/**
+	 * Método que incrementa 1 segundo
+	 */
+	public void incrementaSeg() {
+		
+		//Incrementamos 1 a segundo
 		segundo++;
+		//Si segundo es igual a 60
 		if (segundo==60) {
+			//Se restablece a 0 
 			segundo=0;
+			//Sumamos 1 minuto
 			minuto++;
 		}
+		//Si minuto es igual a 60
 		if (minuto==60) {
+			//Se restablece a 0
 			minuto=0;
+			//Y sumamos 1 hora
 			hora++;
 		}
+		//Si hora es igual a 24
 		if (hora==24) {
+			//Restablecemos hora a 0
 			hora=0;
 		}
 
