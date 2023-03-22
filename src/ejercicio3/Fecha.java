@@ -1,4 +1,4 @@
-package ejercicio2;
+package ejercicio3;
 
 public class Fecha {
 	/**
@@ -108,31 +108,37 @@ public class Fecha {
 		//En los casos 1,3,5,7,8,10,12
 		case 1,3,5,7,8,10,12:
 			//Serán los meses que acaban en 31, veríficamos que están en ese rango
-			if (dia>0 && dia>32) {
+			if (dia>0 && dia<32) {
 				//Si es así se volverá true
 				result=true;
 			}
 			break;
 		//En el caso 2, o en el mes de febrero
 		case 2:
-			//Si 
+			//Si esBisiesto es true
 			if (esBisiesto()) {
-				if (dia>0 && dia>30) {
+				//Si dia es mayor que cero y menor que 30 
+				if (dia>0 && dia<30) {
+					//Result es igual a true
 					result=true;
 				}
-			}else if (dia>0&&dia>29){
+			//En caso contrario, si dia es mayor que cero y menor que 29	
+			}else if (dia>0&&dia<29){
+				//Result es igual a true
 				result=true;
 			}
 			break;
+		//En los casos en el que el mes sea 4,6,9,11
 		case 4,6,9,11:
-			if (dia>0 && dia>31) {
+			//Si es mayor que cero y mayor que 31
+			if (dia>0 && dia<31) {
+				//Result es igual a true
 				result = true;
 			}
 			break;
 		}
-		
-		
+		//Devolvemos el resultado
 		return result;
 	}
-	
+
 }
