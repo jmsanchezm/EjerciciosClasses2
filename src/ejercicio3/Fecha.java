@@ -89,7 +89,7 @@ public class Fecha {
 	private boolean esBisiesto () {
 		boolean result=false;//Se guardará el resultado
 		//Si el módulo del año es igual a 4
-		if((año % 4 == 0)) {
+		if((año % 4 == 0) && ((año % 100 != 0) || (año % 400 == 0))) {
 			//Return será true, ya que se tratará de un año bisiesto
 			result=true;
 		}
@@ -140,5 +140,85 @@ public class Fecha {
 		//Devolvemos el resultado
 		return result;
 	}
+	/**
+	 * Método que suma 1 dia y comprueba que esté correcta
+	 */
+	public void diaSiguiente () {
+			//Sumamos 1 a dia
+			dia++;
+			//Comprobamos que la fecha sea correcta 
+			fechaCorrecta();
+			//Creamos el switch con el valor de entrada mes
+			switch (mes) {
+			//En los casos 1,3,5,7,8,10,12
+			case 1,3,5,7,8,10,12:
+				//Si dia es igual a 32
+				if (dia==32) {
+					//Dia se restablece a 1
+					dia =1;
+					//Y se suma un mes
+					mes++;
+					//Si mes llega a 12
+					if (mes==13) {
+						//Se sumará un año
+						año++;
+						//Y mes se restablecerá a 1
+						mes=1;
+					}
+				}
+			//En el caso 2
+			case 2: 
+				//Si el año es bisiesto
+				if (esBisiesto()) {
+					//Si dia es igual a 30
+					if (dia==30) {
+						//Dia se restablece a 1
+						dia=1;
+						//Y mes se sumará 1
+						mes++;
+					}
+				//En en caso de que dia se igual a 29	
+				}else if (dia==29) {
+					//dia se restablece a 1
+					dia=1;
+					//Y se suma un mes
+					mes++;
+				}
+			//En los casos 4,6,9,11	
+			case 4,6,9,11:
+				//Si dia es igual a 31
+				if (dia==31) {
+					//Se restablece dia a 1
+					dia=1;
+					//Y se suma 1 a mes
+					mes++;
+				}
+			}
+		}
+	
+	/**
+	 * Método que mostrará la fecha 
+	 */
+	public String toString() {
+		String result = "";
+		if (dia < 10) {
+			result = "0" + dia + "-"  + mes + "-" + año;
+		}
+		
+		if (mes<10) {
+			result =  dia + "-" + "0" + mes + "-" + año;
+		}
+		
+		if (dia < 10 && mes < 10) {
+			result = "0" + dia + "-" + "0" + mes + "-" + año;
+		}
+
+		if (dia>9 && mes>9) {
+			result = dia + "-" + mes + "-" + año;
+		}
+
+		return result;
+	}
 
 }
+
