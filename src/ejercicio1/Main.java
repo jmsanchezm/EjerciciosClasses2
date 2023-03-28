@@ -43,6 +43,9 @@ public class Main {
 		//Mostramos la nueva hora modificada
 		System.out.println("La hora con los segundos incrementados es:");
 		System.out.println(hor.getHora() + ":" + hor.getMinuto() + ":"+ hor.getSegundo());
+		
+		//Cerramos el Scanner
+		read.close();
 	}
 
 }
